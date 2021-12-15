@@ -1,0 +1,1 @@
+jade -writer -pkg=tmpl jade/
