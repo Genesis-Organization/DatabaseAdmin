@@ -17,3 +17,5 @@ go.sum
 tmp/*
 
 rsrc.syso
+
+src/web/libs/*.js

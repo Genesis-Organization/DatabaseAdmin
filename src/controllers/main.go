@@ -1,17 +1,11 @@
 package controllers
 
 import (
-	"bytes"
-	"net/http"
+	http "net/http"
 
-	"github.com/gin-gonic/gin"
-
-	tmpl "GenesisDAT/src/templates"
+	gin "github.com/gin-gonic/gin"
 )
 
 func ServeIndex(c *gin.Context) {
-	buf := new(bytes.Buffer)
-	tmpl.Index("Test Index Page", true, buf)
-	c.Writer.WriteHeader(http.StatusOK)
-	c.Writer.Write([]byte(buf.String()))
+	c.HTML(http.StatusOK, "index.html", gin.H{})
 }

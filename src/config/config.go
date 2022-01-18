@@ -1,9 +1,6 @@
 package config
 
-type ConfigInterface struct {
-	Port string
-}
-
-var Config = ConfigInterface{
-	Port: ":3337",
-}
+const (
+	Port string = ":3337"
+	Mode string = "DEV"
+)
