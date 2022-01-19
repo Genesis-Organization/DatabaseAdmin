@@ -1,6 +1,6 @@
 /*
-    Its only folder informational folder.
-    There is list of javascript libs used in that project
+    The file is for informational purposes only
+    It contains a list of used js libraries
 
     > Alpine.js
 */
