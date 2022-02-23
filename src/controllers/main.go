@@ -6,6 +6,8 @@ import (
 	gin "github.com/gin-gonic/gin"
 )
 
-func ServeIndex(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", gin.H{})
+type SciencesController struct{}
+
+func (v SciencesController) GetGroups(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.tpl", gin.H{})
 }

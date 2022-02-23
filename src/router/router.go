@@ -1,21 +1,34 @@
 package router
 
 import (
-	Controllers "GenesisDAT/src/controllers"
-
+	cors "github.com/gin-contrib/cors"
 	gin "github.com/gin-gonic/gin"
+
+	Controllers "GenesisDAT/src/controllers"
+	// Database "GenesisDAT/src/database"
+	Middlewares "GenesisDAT/src/middlewares"
 )
 
 func CreateServer() *gin.Engine {
 	R := gin.Default()
-	R.LoadHTMLGlob("src/web/**/*.html")
 
-	R.Static("/libs", "src/web/libs")
-	R.Static("/assets", "src/web/assets")
+	// Database.ConnectDB()
 
+	R.Use(cors.Default())
 	R.SetTrustedProxies([]string{"192.168.1.2"})
 
-	R.GET("/", Controllers.ServeIndex)
+	R.Use(Middlewares.UseAuthorization)
+
+	SciencesRoutes := R.Group("/sciences")
+	{
+		var Controller Controllers.SciencesController
+
+		R_Groups := SciencesRoutes.Group("/groups")
+		{
+			R_Groups.GET("/all", Controller.GetGroups)
+		}
+
+	}
 
 	return R
 }
